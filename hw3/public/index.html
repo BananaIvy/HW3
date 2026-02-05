@@ -1,0 +1,102 @@
+<!-- Savannah Macdonald -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cheesecake Order Form</title>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script
+     src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+  </script>
+
+  <!-- Button function -->
+  <script>
+     $(document).ready(function(){
+        $("button").on("click", function(e){
+	   e.preventDefault();
+
+	   if (/vegan/i.test($("#userinput").val())) {
+	      alert("WARNING: Cheesecakes contain dairy.");
+	      return;
+	   }
+
+	   $("#RTopping").text($("input[name='topping']:checked").val() || "(no topping selected)");
+	   $("#RQty").text($("#options").val());
+	   $("#RNotes").text($("#userinput").val());
+           
+	   $("#orderForm").hide();	   
+	   $("#orderConfirmation").show();
+        });
+	
+	$(".month-menu li").on("click", function(){
+           $("#monthText").text($(this).text());
+        });
+     });
+  </script>
+</head>
+
+<body>
+
+<h1>Cheesecake Order Form</h1>
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg/1920px-Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" alt="You're not privileged enough to view this image, sorry :)" width="333" height="270">
+
+<div id="orderForm">
+<p>Quantity Topping</p>
+  <table>
+     <tr>
+      <td>
+        <select id="options">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        </select>
+     </td>
+     <td>
+       <label><input type="radio" name="topping" value="Plain"> Plain</label>
+       <br>
+       <label><input type="radio" name="topping" value="Cherry"> Cherry</label>
+       <br>
+       <label><input type="radio" name="topping" value="Chocolate"> Chocolate</label>
+       <br>
+       <label><input type="radio" name="topping" value="Heart disease"> Heart disease</label>
+      </td>
+   </tr>
+  </table>
+
+<p>Notes</p>
+
+<textarea id="userinput">Enter any special instructions here</textarea>
+<br>
+<button id="orderButton">Order</button>
+</div>
+
+ <div id="orderConfirmation" style="display:none;">
+    <p><strong>Thank you! Your order has been placed</strong></p>
+    <p>Topping: <span id="RTopping"></span></p>
+    <p>Quantity: <span id="RQty"></span></p>
+    <p>Notes: <span id="RNotes"></span></p>
+  </div>
+
+
+
+
+  <h3>
+    Orders for
+    <span class="month-widget">
+      <span id="monthText">Jan</span> ▾
+      <ul class="month-menu">
+        <li>Jan</li><li>Feb</li><li>Mar</li><li>Apr</li><li>May</li><li>Jun</li>
+        <li>Jul</li><li>Aug</li><li>Sep</li><li>Oct</li><li>Nov</li><li>Dec</li>
+      </ul>
+    </span>
+  </h3>
+
+<ul>
+    <li>11 cherry</li>
+    <li>17 chocolate</li>
+    <li>31 plain</li>
+    <li>My wallet</li>
+  </ul>
+</body>
+</html>
